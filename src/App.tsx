@@ -27,6 +27,9 @@ import { SettingsPage } from './pages/settings/SettingsPage';
 import { HelpPage } from './pages/help/HelpPage';
 import { DealsPage } from './pages/deals/DealsPage';
 import { MeetingsPage } from './pages/meetings/MeetingsPage';
+import { DocumentPageChamber } from './pages/documents/DocumentPageChamber';
+import { VideoCallPage } from './pages/calls/VideoCallPage';
+
 
 // Chat Pages
 import { ChatPage } from './pages/chat/ChatPage';
@@ -90,11 +93,18 @@ function App() {
             <Route index element={<ChatPage />} />
             <Route path=":userId" element={<ChatPage />} />
           </Route>
+             // Separate routes
+              <Route path="/meetings" element={<DashboardLayout />}>
+                   <Route index element={<MeetingsPage />} />
+              </Route>
 
-          <Route path="/meetings" element={<DashboardLayout />}>
-               <Route index element={<MeetingsPage />} />
-          </Route>
-          
+              <Route path="/documents-chamber" element={<DashboardLayout />}>
+                   <Route index element={<DocumentPageChamber />} />
+              </Route>
+
+             <Route path="/video-calls" element={<DashboardLayout />}>
+                   <Route index element={<VideoCallPage />} />
+             </Route>
           {/* Redirect root to login */}
           <Route path="/" element={<Navigate to="/login" replace />} />
           
