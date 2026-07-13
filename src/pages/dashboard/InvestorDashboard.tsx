@@ -7,7 +7,6 @@ import { Input } from '../../components/ui/Input';
 import { Badge } from '../../components/ui/Badge';
 import { EntrepreneurCard } from '../../components/entrepreneur/EntrepreneurCard';
 import { useAuth } from '../../context/AuthContext';
-import { Entrepreneur } from '../../types';
 import { entrepreneurs } from '../../data/users';
 import { getRequestsFromInvestor } from '../../data/collaborationRequests';
 
@@ -86,14 +85,19 @@ export const InvestorDashboard: React.FC = () => {
             
             <div className="flex flex-wrap gap-2">
               {industries.map(industry => (
-                <Badge
+                <button
                   key={industry}
-                  variant={selectedIndustries.includes(industry) ? 'primary' : 'gray'}
-                  className="cursor-pointer"
+                  type="button"
                   onClick={() => toggleIndustry(industry)}
+                  className="cursor-pointer rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500"
                 >
-                  {industry}
-                </Badge>
+                  <Badge
+                    variant={selectedIndustries.includes(industry) ? 'primary' : 'gray'}
+                    className="cursor-pointer"
+                  >
+                    {industry}
+                  </Badge>
+                </button>
               ))}
             </div>
           </div>
