@@ -1,34 +1,19 @@
-import React, { useState } from 'react';
-import DocumentChamberDrawer from './DocumentChamberDrawer'; // Make sure the path is correct
+import React from 'react';
 
 export const DocumentsPage = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [activeDoc, setActiveDoc] = useState<{ name: string } | null>(null);
-
-  // This function is called when you click "Open Chamber"
-  const handleOpenChamber = (doc: { name: string }) => {
-    setActiveDoc(doc);
-    setIsDrawerOpen(true);
-  };
-
   return (
     <div className="p-8">
-      {/* ... your existing list rendering ... */}
-      
-      {/* Example of how to trigger the drawer for each file */}
-      <button 
-        onClick={() => handleOpenChamber({ name: 'Pitch Deck 2024.pdf' })}
-        className="text-blue-600 hover:underline"
-      >
-        Open Chamber
-      </button>
+      <h1 className="text-3xl font-bold mb-4">Documents</h1>
 
-      {/* Put the drawer component here at the bottom */}
-      <DocumentChamberDrawer 
-        isOpen={isDrawerOpen} 
-        onClose={() => setIsDrawerOpen(false)} 
-        document={activeDoc} 
-      />
+      <p className="text-gray-600 mb-6">
+        Manage your uploaded documents here.
+      </p>
+
+      <div className="bg-white rounded-lg shadow border p-6">
+        <p className="text-gray-500">
+          No documents available.
+        </p>
+      </div>
     </div>
   );
 };
